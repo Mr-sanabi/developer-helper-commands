@@ -60,9 +60,6 @@ gcheck
 gsave "feat: add helper commands"
 gpush
 
-Потом Git flow:
 
-```powershell
-git init
 gcheck
 gsave "Initial developer helper commands"
