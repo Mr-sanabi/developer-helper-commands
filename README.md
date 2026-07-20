@@ -1,65 +1,62 @@
 # Developer Helper Commands
 
-PowerShell helper commands for Git, Python virtual environments, and local development workflow.
+A focused PowerShell toolkit for the Git and Python workflows used across my projects.
 
-## Features
+## Commands
 
-- Git helper commands
-- Python virtual environment setup
-- Requirements management
-- Playwright setup helper
-- Separate Git and Python/dev menus
+| Area | Commands | Purpose |
+|---|---|---|
+| Git | `gwhere`, `gcheck`, `gstage`, `gcommit`, `gsave`, `gpush`, `gsetup`, `glog` | Repository inspection and daily save/push workflow |
+| Python | `pvenv`, `pon`, `poff`, `preqs`, `pfreeze`, `pinstall`, `pplaywright`, `pcheck` | Virtual environments and dependency management |
+| Help | `ghelp`, `phelp`, `devhelp`, `devstart` | Discover available helpers |
 
-## Git Commands
+## Install
 
-- `gcheck` — check repository status
-- `gsave "message"` — add all changes and commit
-- `gpush` — push current branch
-- `gsetup <url>` — connect GitHub remote and push main branch
-- `glog` — show recent commits
-- `ghelp` — show Git command menu
-
-## Python / Dev Commands
-
-- `pvenv` — create and activate `.venv`
-- `pon` — activate existing `.venv`
-- `poff` — deactivate active environment
-- `preqs` — install dependencies from `requirements.txt`
-- `pfreeze` — save installed packages to `requirements.txt`
-- `pinstall <package>` — install package and update requirements
-- `pplaywright` — install Playwright and browser binaries
-- `pcheck` — show Python project status
-- `phelp` — show Python/dev menu
-
-## General Commands
-
-- `devhelp` — show Git and Python/dev command overview
-- `devstart` — show startup helper menu
-
-## Usage
-
-Add the script content to your PowerShell profile, or source it manually:
+Run PowerShell from this repository:
 
 ```powershell
-. .\developer-helper-commands.ps1ы
+.\install.ps1
+```
 
-Then run:
+The installer copies the helper script into a stable directory and adds one guarded source line to your PowerShell profile. Restart PowerShell, then run:
 
+```powershell
 devhelp
-Example Workflow
-
-New Python project:
-
-pvenv
-pinstall playwright
-pplaywright
-
-Git workflow:
-
 gcheck
-gsave "feat: add helper commands"
+```
+
+## Manual use
+
+Source the script only for the current session:
+
+```powershell
+. .\developer-helper-commands.ps1
+```
+
+## Typical workflow
+
+```powershell
+gcheck
+gsave "feat: finish parser"
 gpush
+```
 
+`gsave` stages all changes in the current repository. Always inspect `gcheck` first so generated files or unrelated edits are not committed accidentally.
 
-gcheck
-gsave "Initial developer helper commands"
+## Uninstall
+
+```powershell
+.\uninstall.ps1
+```
+
+The uninstaller removes the managed profile entry and installed helper script. It does not delete this repository or any Git data.
+
+## Requirements
+
+- PowerShell 7+ recommended
+- Git available on `PATH`
+- Python available on `PATH` for Python helpers
+
+## License
+
+MIT
